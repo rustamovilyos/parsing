@@ -5,6 +5,7 @@ import os
 
 
 
+
 URL = 'https://www.olx.uz/transport/legkovye-avtomobili/chevrolet/cobalt/tashkent/?search%5Bfilter_enum_condition%5D%5B0%5D=perfect&search%5Bfilter_enum_condition%5D%5B1%5D=good&search%5Bfilter_enum_condition%5D%5B2%5D=mediocre&search%5Bphotos%5D=1&search%5Border%5D=created_at%3Adesc'
 HEADERS = {'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36', 'accept': '*/*'}
 FILE = 'cars.csv'
@@ -42,7 +43,8 @@ def get_content(html):
 
 
 def save_file(items, path):
-    with open('cars.csv', mode='a', encoding='utf8') as file:
+    # soup = BeautifulSoup.BeautifulSoup(save_file.de)
+    with open('cars.csv', mode='a', errors='ignore') as file:
         writer = csv.writer(file, delimiter=';')
         writer.writerow(['Rasmi',
                          'Markasi',
