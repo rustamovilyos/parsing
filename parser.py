@@ -36,7 +36,8 @@ def get_content(html):
             'title': item.find('h3', class_='lheight22 margintop5').get_text(strip=True),
             'link_to_post': item.find('a', class_='marginright5').get('href'),
             'price': item.find('p', class_='price').get_text(strip=True),
-            'city': item.find('small', class_='breadcrumb x-normal').find_next('span').get_text(strip=True),
+            'city': item.find('td', class_='bottom-cell').find_next('span').get_text(strip=True),
+            'time': item.find('td', class_='bottom-cell').findChildren('span')[1].text,
             })
 
     return cars
@@ -50,13 +51,15 @@ def save_file(items, path):
                          'Markasi',
                          "E'lon ssilkasi",
                          'Narxi',
-                         'Shahar'])
+                         'Shahar',
+                         "E'lon vaqti"])
         for item in items:
             writer.writerow([item['image'],
                              item['title'],
                              item['link_to_post'],
                              item['price'],
-                             item['city']])
+                             item['city'],
+                             item['time'], ])
 
 
 def parse():
